@@ -17,7 +17,12 @@ FixedBitSet ConstructFixedBitSet<T, ArraySize>() {
 
 	return F;
 }
+template<size_t ArraySize>
+FixedBitSet ConstructFixedBitSet<ArraySize>() {//aurhers default.
+	FixedBitSet F = { uint8_t,ArraySize,ArraySize * CHAR_BIT,sizeof(T) };
 
+	return F;
+}
 bool Free(FixedBitSet& In) {
 	Free(In);
 
