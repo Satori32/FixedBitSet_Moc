@@ -1,18 +1,6 @@
-/** /
-#include <stdio.h>
-#include <stdint.h>
+#include "FixedBitSet.h"
 
-struct FixedBitSet {
-	//type Type = NULL;
-	typedef uint8_t Type;
-	//type T = Type;
-	const size_t Size = 1;
-	const size_t BitCount = 1;
-	const size_t ElementSize = 7;
-	const Type Bits[Size+2] = { 0, };
-};
-
-template<class T,size_t ArraySize>
+template<class T, size_t ArraySize>
 FixedBitSet ConstructFixedBitSet<T, ArraySize>() {
 	FixedBitSet F = { T,ArraySize,ArraySize * CHAR_BIT,sizeof(T) };
 
@@ -38,7 +26,7 @@ bool RiseBit(FixedBitSet& In, size_t BitCount) {
 	In.Type X = In.Bits[D];
 	In.Type Y = X | (1 << M);
 	In.Bits[D] = Y;
-	
+
 	return true;
 }
 
@@ -73,4 +61,4 @@ int BitIndex(FixedBitSet& In, size_t BitCount) {//read only. i cant write , writ
 	size_t M = BitCount / In.ElementSize;
 
 	return (In.Bits[D] & (1 << M)) ? 1 : 0;
-}/**/
+}
