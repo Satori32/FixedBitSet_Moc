@@ -23,6 +23,8 @@ bool RiseBit(FixedBitSet& In, size_t BitCount) {
 	size_t D = BitCount / In.ElementSize;
 	size_t M = BitCount % In.ElementSize;
 
+	if (D == In.Size - 1) { D++; }
+
 	In.Type X = In.Bits[D];
 	In.Type Y = X | (1 << M);
 	In.Bits[D] = Y;
@@ -34,6 +36,8 @@ bool DropBit(FixedBitSet& In, size_t BitCount) {
 	if (In.BitCount <= BitCount) { return false; }
 	size_t D = BitCount / In.ElementSize;
 	size_t M = BitCount / In.ElementSize;
+
+	if (D == In.Size - 1) { D++; }
 
 	In.Type X = In.Bits[D];
 	In.Type Y = X & (((X ^ 0) ^ (1 << M)) ^ 0);
