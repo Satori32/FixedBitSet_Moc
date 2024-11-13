@@ -8,7 +8,7 @@ struct FixedBitSet {
 	const size_t Size = 1;
 	const size_t BitCount = 1;
 	const size_t ElementSize = 7;
-	const Type Bits[Size] = { 0, };
+	const Type Bits[Size+2] = { 0, };
 };
 
 template<class T,size_t ArraySize>
